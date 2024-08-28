@@ -1,0 +1,3 @@
+[submodule "src/modules/shared"]
+	path = src/modules/shared
+	url = git@github.com:HornyWorkshop/shared.git

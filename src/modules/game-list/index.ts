@@ -1,9 +1,9 @@
-import { GameList } from '@shared/types/game'
 import { readTextFile, writeTextFile } from '@tauri-apps/api/fs'
 import { join } from '@tauri-apps/api/path'
 import { match } from 'fp-ts/lib/Either'
 import { pipe } from 'fp-ts/lib/function'
 import type { Errors } from 'io-ts'
+import { GameList } from '@shared/types/game/list'
 import { useProvider } from '../provider'
 
 export const useGameList = createGlobalState(() => {
@@ -36,7 +36,7 @@ export const useGameList = createGlobalState(() => {
 
     console.log('save gameList to file: ', path.value)
 
-    await writeTextFile(path.value, JSON.stringify(gameList.value))
+    await writeTextFile(path.value, JSON.stringify(gameList.value, null, 2))
   }, { deep: true })
 
   return { gameList }
