@@ -13,9 +13,9 @@ watch(name, () => {
 <template>
   <section class="space-y-2">
     <div v-if="name.length > 0" class="text-right">
-      <GameCreateSmall v-if="name.length > 0">
+      <FormSmall>
         {{ uuid }}
-      </GameCreateSmall>
+      </FormSmall>
     </div>
 
     <input v-model="name" type="text" class="create-input" placeholder="GAME NAME">

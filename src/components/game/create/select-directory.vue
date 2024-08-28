@@ -16,9 +16,9 @@ async function onClick() {
 <template>
   <section class="space-y-2">
     <div v-if="directory.length > 0" class="text-right">
-      <GameCreateSmall v-if="directory.length > 0">
+      <FormSmall>
         {{ directory }}
-      </GameCreateSmall>
+      </FormSmall>
     </div>
 
     <button type="button" class="create-button size-full py-4" @click="() => onClick()">

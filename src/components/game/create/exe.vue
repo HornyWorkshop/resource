@@ -30,21 +30,21 @@ const availableExeList = computed(() => exeList.value.filter(x => !form.value.so
 
 <template>
   <section v-if="exeList.length > 0" class="flex items-start gap-4">
-    <div v-show="availableExeList.length > 0" class="flex flex-col gap-2 rounded-md p-4 outline outline-1 outline-neutral-800">
+    <div v-show="availableExeList.length > 0" class="flex flex-col gap-4 rounded-md p-4 outline outline-1 outline-neutral-800">
       <template v-for="entry of availableExeList" :key="entry.name">
-        <button v-if="entry.name" type="button" class="create-button px-2 py-1" @click="() => onAdd(entry)">
+        <button v-if="entry.name" type="button" class="create-button px-4 py-2" @click="() => onAdd(entry)">
           {{ entry.name }}
         </button>
       </template>
     </div>
 
     <div v-show="form.length > 0" class="flex grow flex-wrap gap-2 rounded-md bg-neutral-800 p-4">
-      <span v-for="value of form" :key="value.name" class="flex flex-col gap-2 rounded-md bg-neutral-900 p-4">
+      <span v-for="value of form" :key="value.name" class="flex flex-col gap-4 rounded-md bg-neutral-900 p-4">
         <span class="text-center font-bold uppercase">
           {{ value.name }}
         </span>
 
-        <button type="button" class="create-button px-2 py-1" :class="{ 'bg-green-800': value.run }" @click="() => value.run = !value.run">
+        <button type="button" class="create-button px-4 py-2" :class="{ 'bg-green-800': value.run }" @click="() => value.run = !value.run">
           <template v-if="value.run">
             is default
           </template>

@@ -51,7 +51,7 @@ function onDrop(event: DragEvent) {
     </section>
 
     <section
-      class="flex place-content-center rounded-md bg-neutral-700 p-10 text-neutral-900" @drop="onDrop" @dragover.prevent @dragenter.prevent
+      class="flex place-content-center rounded-md bg-neutral-700 p-10 text-neutral-900 shadow-md outline outline-1 outline-neutral-900 hover:outline-neutral-300 hover:text-neutral-300 hover:bg-transparent transition-all" @drop="onDrop" @dragover.prevent @dragenter.prevent
     >
       <RecyclingIcon class="text-9xl" />
     </section>

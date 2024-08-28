@@ -14,7 +14,7 @@
 
 @layer components {
   .create-input {
-    @apply size-full rounded-md border border-neutral-900/10 bg-neutral-600 p-4 text-2xl text-neutral-900 placeholder:text-neutral-900 shadow-md transition-colors hover:bg-neutral-400 hover:text-neutral-700 placeholder:hover:text-neutral-700 focus:bg-neutral-400 focus:placeholder:text-neutral-700 focus:text-neutral-700 focus:outline-none
+    @apply size-full rounded-md border border-neutral-900/10 bg-neutral-700 p-4 text-2xl text-neutral-900 placeholder:text-neutral-900 shadow-md transition-colors hover:bg-neutral-300 hover:text-neutral-700 placeholder:hover:text-neutral-700 focus:bg-neutral-300 focus:placeholder:text-neutral-700 focus:text-neutral-700 focus:outline-none
   }
 
   .create-button {
