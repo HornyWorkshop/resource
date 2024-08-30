@@ -9,7 +9,6 @@ import autoIcons from 'unplugin-icons/vite'
 import autoRouter from 'unplugin-vue-router/vite'
 import autoImports from 'unplugin-auto-import/vite'
 import autoComponents from 'unplugin-vue-components/vite'
-import VueComplexTypes from '@vue.ts/complex-types/vite'
 
 // https://vitejs.dev/config/
 export default defineConfig(async () => ({
@@ -17,7 +16,6 @@ export default defineConfig(async () => ({
     autoRouter({
       dts: './.types/auto-routes.d.ts',
     }),
-    // VueComplexTypes(),
     vue(),
     autoIcons({
       autoInstall: true,

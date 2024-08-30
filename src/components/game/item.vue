@@ -6,7 +6,7 @@ defineProps<Props>()
 </script>
 
 <template>
-  <FormGroup class="cursor-move space-y-4">
+  <FormGroup class="cursor-move space-y-4" :hover="true">
     <header class="truncate lowercase underline underline-offset-4">
       {{ game.name }}
     </header>
