@@ -6,8 +6,6 @@ const { gameList } = useGameList()
 const { configured } = useProvider()
 
 function onDragStart(event: DragEvent, index: number) {
-  console.log('drag start')
-
   if (event.dataTransfer) {
     event.dataTransfer.dropEffect = 'move'
     event.dataTransfer.effectAllowed = 'move'
@@ -15,14 +13,12 @@ function onDragStart(event: DragEvent, index: number) {
   }
 }
 
-// function onDrop(event: DragEvent) {
-//   console.log('drop')
-
-//   if (event.dataTransfer) {
-//     const index = event.dataTransfer?.getData('index')
-//     console.log(`to remove index: ${index}`)
-//   }
-// }
+function onDrop(event: DragEvent) {
+  if (event.dataTransfer) {
+    const index = event.dataTransfer.getData('index')
+    gameList.value.splice(Number(index), 1)
+  }
+}
 </script>
 
 <template>
@@ -51,6 +47,6 @@ function onDragStart(event: DragEvent, index: number) {
       <GameItem v-for="item, index of gameList" :key="item.uuid" :game="item" draggable="true" @dragstart="onDragStart($event, index)" />
     </section>
 
-    <MiscRecycling />
+    <MiscRecycling @drop="onDrop($event)" @dragover.prevent @dragenter.prevent />
   </section>
 </template>

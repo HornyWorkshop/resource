@@ -20,7 +20,8 @@
       {
         "title": "Horny Workshop Resource",
         "width": 1280,
-        "height": 720
+        "height": 720,
+        "fileDropEnabled": false
       }
     ],
     "security": {
