@@ -1,7 +1,6 @@
 <script setup lang="ts">
 import { useGameList } from '../modules/game-list'
 import { useProvider } from '@/modules/provider'
-import RecyclingIcon from '~icons/ic/baseline-recycling'
 
 const { gameList } = useGameList()
 const { configured } = useProvider()
@@ -16,14 +15,14 @@ function onDragStart(event: DragEvent, index: number) {
   }
 }
 
-function onDrop(event: DragEvent) {
-  console.log('drop')
+// function onDrop(event: DragEvent) {
+//   console.log('drop')
 
-  if (event.dataTransfer) {
-    const index = event.dataTransfer?.getData('index')
-    console.log(`to remove index: ${index}`)
-  }
-}
+//   if (event.dataTransfer) {
+//     const index = event.dataTransfer?.getData('index')
+//     console.log(`to remove index: ${index}`)
+//   }
+// }
 </script>
 
 <template>
@@ -35,25 +34,23 @@ function onDrop(event: DragEvent) {
         </PageName>
 
         <GameCreate v-slot="{ toggle }">
-          <button v-show="configured.state" type="button" class="create-button px-4 py-2" @click="() => toggle()">
+          <FormButton v-show="configured.state" type="button" @click="() => toggle()">
             add game
-          </button>
+          </FormButton>
         </GameCreate>
       </div>
     </PageHeader>
 
-    <section class="flex flex-wrap gap-4">
-      <p v-show="gameList.length <= 0">
+    <section v-if="gameList.length <= 0">
+      <p>
         nothing...
       </p>
+    </section>
 
+    <section v-else class="grid gap-4" style="grid-template-columns: repeat(auto-fill, minmax(16rem, 1fr));">
       <GameItem v-for="item, index of gameList" :key="item.uuid" :game="item" draggable="true" @dragstart="onDragStart($event, index)" />
     </section>
 
-    <section
-      class="flex place-content-center rounded-md bg-neutral-700 p-10 text-neutral-900 shadow-md outline outline-1 outline-neutral-900 hover:outline-neutral-300 hover:text-neutral-300 hover:bg-transparent transition-all" @drop="onDrop" @dragover.prevent @dragenter.prevent
-    >
-      <RecyclingIcon class="text-9xl" />
-    </section>
+    <MiscRecycling />
   </section>
 </template>

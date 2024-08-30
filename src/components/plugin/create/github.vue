@@ -14,15 +14,15 @@ watchArray([owner, repo], () => {
 
 <template>
   <section class="space-y-2">
-    <div v-if="owner.length > 0 || repo.length > 0" class="text-right">
+    <div :class="{ 'opacity-100': owner.length > 0 || repo.length > 0 }" class="text-right opacity-0 transition-opacity">
       <FormSmall>
         {{ uuid }}
       </FormSmall>
     </div>
 
     <section class="grid grid-cols-2 gap-2">
-      <input v-model="owner" type="text" class="create-input" placeholder="GITHUB OWNER">
-      <input v-model="repo" type="text" class="create-input" placeholder="GITHUB REPO">
+      <input v-model="owner" type="text" class="create-input-large" placeholder="GITHUB OWNER">
+      <input v-model="repo" type="text" class="create-input-large" placeholder="GITHUB REPO">
     </section>
   </section>
 </template>

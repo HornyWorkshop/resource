@@ -2,6 +2,8 @@
 import CookieIcon from '~icons/ic/baseline-cookie'
 import GamesIcon from '~icons/ic/baseline-games'
 import SettingsIcon from '~icons/ic/baseline-settings'
+import SmartButtonIcon from '~icons/ic/baseline-smart-button'
+import CropSquareIcon from '~icons/ic/baseline-crop-square'
 </script>
 
 <template>
@@ -22,6 +24,18 @@ import SettingsIcon from '~icons/ic/baseline-settings'
       <RouterLink to="/settings">
         <SidebarItem>
           <SettingsIcon />
+        </SidebarItem>
+      </RouterLink>
+
+      <RouterLink to="/ui/button">
+        <SidebarItem>
+          <SmartButtonIcon />
+        </SidebarItem>
+      </RouterLink>
+
+      <RouterLink to="/ui/group">
+        <SidebarItem>
+          <CropSquareIcon />
         </SidebarItem>
       </RouterLink>
     </nav>

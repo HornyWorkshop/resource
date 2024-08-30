@@ -3,7 +3,6 @@ import { useForm } from 'vee-validate'
 import { toTypedSchema } from '@vee-validate/yup'
 import { UUID } from 'io-ts-types'
 import { schema } from './schema'
-import { useGameList } from '@/modules/game-list'
 import { usePluginList } from '@/modules/plugin-list'
 import { cast } from '@/modules/validator/cast'
 

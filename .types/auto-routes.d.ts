@@ -22,5 +22,7 @@ declare module 'vue-router/auto-routes' {
     '/games': RouteRecordInfo<'/games', '/games', Record<never, never>, Record<never, never>>,
     '/plugins': RouteRecordInfo<'/plugins', '/plugins', Record<never, never>, Record<never, never>>,
     '/settings': RouteRecordInfo<'/settings', '/settings', Record<never, never>, Record<never, never>>,
+    '/ui/button': RouteRecordInfo<'/ui/button', '/ui/button', Record<never, never>, Record<never, never>>,
+    '/ui/group': RouteRecordInfo<'/ui/group', '/ui/group', Record<never, never>, Record<never, never>>,
   }
 }

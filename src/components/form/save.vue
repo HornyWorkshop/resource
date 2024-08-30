@@ -1,7 +1,7 @@
 <template>
   <section>
-    <button type="submit" class="create-button size-full px-4 py-2">
+    <FormButton class="size-full" type="submit">
       save
-    </button>
+    </FormButton>
   </section>
 </template>

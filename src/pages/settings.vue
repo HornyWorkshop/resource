@@ -23,9 +23,9 @@ async function onRootChange() {
     </PageHeader>
 
     <section class="space-x-4">
-      <button type="button" class="create-button px-4 py-2" @click="() => onRootChange()">
+      <FormButton type="button" @click="() => onRootChange()">
         change provider root
-      </button>
+      </FormButton>
 
       <span>
         {{ root }}

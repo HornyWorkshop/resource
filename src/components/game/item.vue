@@ -6,16 +6,16 @@ defineProps<Props>()
 </script>
 
 <template>
-  <article class="cursor-move space-y-4 rounded-md p-4 shadow-md outline outline-1 outline-neutral-700 transition-[outline-color] hover:outline-neutral-300">
-    <header class="px-2 lowercase underline underline-offset-4">
+  <FormGroup class="cursor-move space-y-4">
+    <header class="truncate lowercase underline underline-offset-4">
       {{ game.name }}
     </header>
 
     <div class="grid grid-cols-[1fr_auto] gap-x-4">
       <template v-for="{ name, run } of game.exeList" :key="name">
-        <span>{{ name }}</span>
-        <span :class="{ 'text-green-300': run, 'text-red-300': run === false }">{{ run }}</span>
+        <span class="truncate">{{ name }}</span>
+        <span :class="{ 'text-lime-300': run, 'text-rose-300': run === false }">{{ run }}</span>
       </template>
     </div>
-  </article>
+  </FormGroup>
 </template>

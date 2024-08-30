@@ -15,14 +15,14 @@ async function onClick() {
 
 <template>
   <section class="space-y-2">
-    <div v-if="directory.length > 0" class="text-right">
+    <div :class="{ 'opacity-100': directory.length > 0 }" class="text-right opacity-0 transition-opacity">
       <FormSmall>
         {{ directory }}
       </FormSmall>
     </div>
 
-    <button type="button" class="create-button size-full py-4" @click="() => onClick()">
+    <FormButton type="button" class="size-full" @click="() => onClick()">
       select folder
-    </button>
+    </FormButton>
   </section>
 </template>

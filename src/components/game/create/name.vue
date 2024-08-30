@@ -12,12 +12,12 @@ watch(name, () => {
 
 <template>
   <section class="space-y-2">
-    <div v-if="name.length > 0" class="text-right">
+    <div :class="{ 'opacity-100': name.length > 0 }" class="text-right opacity-0 transition-opacity">
       <FormSmall>
         {{ uuid }}
       </FormSmall>
     </div>
 
-    <input v-model="name" type="text" class="create-input" placeholder="GAME NAME">
+    <input v-model="name" type="text" class="create-input-large" placeholder="GAME NAME">
   </section>
 </template>

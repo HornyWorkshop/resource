@@ -16,9 +16,9 @@ const { configured } = useProvider()
         </PageName>
 
         <PluginCreate v-slot="{ toggle }">
-          <button v-show="configured.state" type="button" class="create-button px-4 py-2" @click="() => toggle()">
+          <FormButton v-show="configured.state" type="button" @click="() => toggle()">
             add plugin
-          </button>
+          </FormButton>
         </PluginCreate>
       </div>
     </PageHeader>
@@ -31,10 +31,6 @@ const { configured } = useProvider()
       <PluginItem v-for="item of pluginList" :key="item.uuid" :plugin="item" />
     </section>
 
-    <section
-      class="flex place-content-center rounded-md bg-neutral-700 p-10 text-neutral-900 shadow-md outline outline-1 outline-neutral-900 transition-all hover:bg-transparent hover:text-neutral-300 hover:outline-neutral-300"
-    >
-      <RecyclingIcon class="text-9xl" />
-    </section>
+    <MiscRecycling />
   </section>
 </template>

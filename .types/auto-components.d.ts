@@ -7,7 +7,9 @@ export {}
 /* prettier-ignore */
 declare module 'vue' {
   export interface GlobalComponents {
+    FormButton: typeof import('./../src/components/form/button/index.vue')['default']
     FormErrors: typeof import('./../src/components/form/errors.vue')['default']
+    FormGroup: typeof import('./../src/components/form/group/index.vue')['default']
     FormSave: typeof import('./../src/components/form/save.vue')['default']
     FormSmall: typeof import('./../src/components/form/small.vue')['default']
     GameCreate: typeof import('./../src/components/game/create/index.vue')['default']
@@ -16,8 +18,10 @@ declare module 'vue' {
     GameCreateName: typeof import('./../src/components/game/create/name.vue')['default']
     GameCreateSelectDirectory: typeof import('./../src/components/game/create/select-directory.vue')['default']
     GameItem: typeof import('./../src/components/game/item.vue')['default']
+    MiscRecycling: typeof import('./../src/components/misc/recycling.vue')['default']
     PageHeader: typeof import('./../src/components/page/header.vue')['default']
     PageName: typeof import('./../src/components/page/name.vue')['default']
+    PageUi: typeof import('../src/components/wrapper/ui.vue')['default']
     PluginCreate: typeof import('./../src/components/plugin/create/index.vue')['default']
     PluginCreateGameList: typeof import('./../src/components/plugin/create/game-list.vue')['default']
     PluginCreateGithub: typeof import('./../src/components/plugin/create/github.vue')['default']
@@ -30,5 +34,6 @@ declare module 'vue' {
     TransitionHorizontal: typeof import('./../src/components/transition/horizontal.vue')['default']
     TransitionVertical: typeof import('./../src/components/transition/vertical.vue')['default']
     WrapperModal: typeof import('./../src/components/wrapper/modal.vue')['default']
+    WrapperUi: typeof import('./../src/components/wrapper/ui.vue')['default']
   }
 }

@@ -9,7 +9,10 @@ export const schema = object({
   }).required(),
   gameList: array(object({
     uuid: string().required(),
-    regex: array(string().required()).required().min(1),
+    regexList: array(object({
+      uuid: string().uuid().required(),
+      value: string().required(),
+    })).required().min(1),
   })).required().min(1),
 }).strict()
 

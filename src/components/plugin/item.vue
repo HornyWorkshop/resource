@@ -6,7 +6,7 @@ defineProps<Props>()
 </script>
 
 <template>
-  <article class="cursor-move space-y-4 rounded-md p-4 shadow-md outline outline-1 outline-neutral-700 transition-[outline-color] hover:outline-neutral-300">
+  <FormGroup class="cursor-move space-y-4">
     <header class="px-2 lowercase underline underline-offset-4">
       [{{ plugin.github.owner }}]: {{ plugin.github.repo }}
     </header>
@@ -17,5 +17,5 @@ defineProps<Props>()
         <span class="text-fuchsia-300">{{ regex }}</span>
       </template>
     </div>
-  </article>
+  </FormGroup>
 </template>
