@@ -4,49 +4,24 @@ import { useProvider } from '@/modules/provider'
 
 const { gameList } = useGameList()
 const { configured } = useProvider()
-
-function onDragStart(event: DragEvent, index: number) {
-  if (event.dataTransfer) {
-    event.dataTransfer.dropEffect = 'move'
-    event.dataTransfer.effectAllowed = 'move'
-    event.dataTransfer.setData('index', String(index))
-  }
-}
-
-function onDrop(event: DragEvent) {
-  if (event.dataTransfer) {
-    const index = event.dataTransfer.getData('index')
-    gameList.value.splice(Number(index), 1)
-  }
-}
 </script>
 
 <template>
-  <section class="space-y-4">
-    <PageHeader>
-      <div class="flex justify-between gap-4">
-        <PageName>
-          Game List
-        </PageName>
+  <WrapperList v-model="gameList">
+    <template #header>
+      <PageName>
+        Game List
+      </PageName>
 
-        <GameCreate v-slot="{ toggle }">
-          <FormButton v-show="configured.state" type="button" @click="() => toggle()">
-            add game
-          </FormButton>
-        </GameCreate>
-      </div>
-    </PageHeader>
+      <GameCreate v-slot="{ toggle }">
+        <FormButton v-show="configured.state" type="button" @click="toggle()">
+          add game
+        </FormButton>
+      </GameCreate>
+    </template>
 
-    <section v-if="gameList.length <= 0">
-      <p>
-        nothing...
-      </p>
-    </section>
-
-    <section v-else class="grid gap-4" style="grid-template-columns: repeat(auto-fill, minmax(16rem, 1fr));">
-      <GameItem v-for="item, index of gameList" :key="item.uuid" :game="item" draggable="true" @dragstart="onDragStart($event, index)" />
-    </section>
-
-    <MiscRecycling @drop="onDrop($event)" @dragover.prevent @dragenter.prevent />
-  </section>
+    <template #item="item">
+      <GameItem :game="item" />
+    </template>
+  </WrapperList>
 </template>

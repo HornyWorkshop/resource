@@ -6,6 +6,11 @@ import type { Errors } from 'io-ts'
 import { GameList } from '@shared/types/game/list'
 import { useProvider } from '../provider'
 
+function onLeft(e: Errors) {
+  // TODO: send to task's in right bottom corner
+  console.debug(e)
+}
+
 export const useGameList = createGlobalState(() => {
   const { content } = useProvider()
   const path = computedAsync(() => join(content.value, 'gameList.json'), '')
@@ -16,11 +21,6 @@ export const useGameList = createGlobalState(() => {
     const values = await readTextFile(path)
     const stored = GameList.decode(JSON.parse(values))
 
-    function onLeft(e: Errors) {
-      // TODO: send to task's in right bottom corner
-      console.debug(e)
-    }
-
     function onRight(value: GameList) {
       gameList.value = value
     }
@@ -30,11 +30,11 @@ export const useGameList = createGlobalState(() => {
 
   watch(gameList, async () => {
     if (path.value === '') {
-      console.log('skip save gameList to file')
+      console.debug('skip save gameList to file')
       return
     }
 
-    console.log('save gameList to file: ', path.value)
+    console.debug('save gameList to file: ', path.value)
 
     await writeTextFile(path.value, JSON.stringify(gameList.value, null, 2))
   }, { deep: true })

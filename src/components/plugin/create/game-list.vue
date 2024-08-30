@@ -28,7 +28,7 @@ onClickOutside(el, () => toggle(false))
 <template>
   <section class="space-y-4">
     <section ref="el" class="relative w-fit">
-      <FormButton type="button" intent="secondary" :active="state" @click="() => toggle()">
+      <FormButton type="button" intent="secondary" :active="state" @click="toggle()">
         pick game
       </FormButton>
 
@@ -36,7 +36,7 @@ onClickOutside(el, () => toggle(false))
         <section v-if="state" class="absolute left-0 top-full h-48 w-min overflow-hidden py-2">
           <section class="size-full overflow-hidden rounded-md border border-stone-900/10 bg-stone-600 shadow-md">
             <section class="flex size-full flex-col gap-4 overflow-auto p-2">
-              <FormButton v-for="{ name, uuid } of gameList.filter(x => !form.some(y => x.uuid === y.uuid))" :key="uuid" type="button" class="!shadow-none" intent="secondary" @click="() => onSelect({ uuid })">
+              <FormButton v-for="{ name, uuid } of gameList.filter(x => !form.some(y => x.uuid === y.uuid))" :key="uuid" type="button" class="!shadow-none" intent="secondary" @click="onSelect({ uuid })">
                 {{ name }}
               </FormButton>
             </section>
@@ -52,7 +52,7 @@ onClickOutside(el, () => toggle(false))
             {{ uuid }}
           </h1>
 
-          <FormButton type="button" intent="remove" size="small" @click="() => onRemove({ index })">
+          <FormButton type="button" intent="remove" size="small" @click="onRemove({ index })">
             remove
           </FormButton>
         </header>

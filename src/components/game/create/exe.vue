@@ -32,7 +32,7 @@ const availableExeList = computed(() => exeList.value.filter(x => !form.value.so
   <section v-if="exeList.length > 0" class="flex items-start gap-4">
     <FormGroup v-show="availableExeList.length > 0" class="flex flex-col gap-4">
       <template v-for="entry of availableExeList" :key="entry.name">
-        <FormButton v-if="entry.name" type="button" @click="() => onAdd(entry)">
+        <FormButton v-if="entry.name" type="button" @click="onAdd(entry)">
           {{ entry.name }}
         </FormButton>
       </template>
@@ -44,7 +44,7 @@ const availableExeList = computed(() => exeList.value.filter(x => !form.value.so
           {{ value.name }}
         </span>
 
-        <FormButton type="button" :class="{ '!bg-lime-900': value.run }" @click="() => value.run = !value.run">
+        <FormButton type="button" :class="{ '!bg-lime-900': value.run }" @click="value.run = !value.run">
           <template v-if="value.run">
             is default
           </template>

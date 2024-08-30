@@ -23,7 +23,7 @@ async function onRootChange() {
     </PageHeader>
 
     <section class="space-x-4">
-      <FormButton type="button" @click="() => onRootChange()">
+      <FormButton type="button" @click="onRootChange()">
         change provider root
       </FormButton>
 

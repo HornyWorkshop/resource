@@ -21,7 +21,7 @@ async function onClick() {
       </FormSmall>
     </div>
 
-    <FormButton type="button" class="size-full" @click="() => onClick()">
+    <FormButton type="button" class="size-full" @click="onClick()">
       select folder
     </FormButton>
   </section>
