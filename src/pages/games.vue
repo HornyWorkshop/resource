@@ -21,7 +21,9 @@ const { configured } = useProvider()
     </template>
 
     <template #item="{ edit, remove, ...item }">
-      <GameItem :game="item" @edit="edit" @remove="remove" />
+      <ListItem @edit="edit" @remove="remove">
+        <GameItem :item="item" />
+      </ListItem>
     </template>
   </WrapperList>
 </template>

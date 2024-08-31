@@ -13,15 +13,17 @@ const { configured } = useProvider()
         Content -> Plugin List
       </PageName>
 
-      <PluginCreate v-slot="{ toggle }">
+      <GameCreate v-slot="{ toggle }">
         <FormButton v-show="configured.state" type="button" @click="toggle()">
           add plugin
         </FormButton>
-      </PluginCreate>
+      </GameCreate>
     </template>
 
-    <template #item="item">
-      <PluginItem :plugin="item" />
+    <template #item="{ edit, remove, ...item }">
+      <ListItem @edit="edit" @remove="remove">
+        <PluginItem :item="item" />
+      </ListItem>
     </template>
   </WrapperList>
 </template>
