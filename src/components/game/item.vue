@@ -16,7 +16,7 @@ interface Emits {
 
 <template>
   <FormGroup class="flex" :hover="true" size="none">
-    <aside class="flex flex-col gap-2 bg-neutral-900 p-4">
+    <aside class="flex flex-col gap-2 bg-neutral-900 px-2 py-4">
       <button type="button" @click="$emit('edit')">
         <ListSidebarItem>
           <EditIcon />
@@ -30,8 +30,8 @@ interface Emits {
       </button>
     </aside>
 
-    <section class="overflow-hidden p-4">
-      <header class="mb-4 grow truncate lowercase underline underline-offset-4">
+    <section class="size-full space-y-4 overflow-hidden p-4">
+      <header class="grow truncate lowercase underline underline-offset-4">
         {{ game.name }}
       </header>
 
