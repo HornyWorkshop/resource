@@ -10,7 +10,7 @@ const { configured } = useProvider()
   <WrapperList v-model="gameList">
     <template #header>
       <PageName>
-        Game List
+        Content -> Game List
       </PageName>
 
       <GameCreate v-slot="{ toggle }">
@@ -20,8 +20,8 @@ const { configured } = useProvider()
       </GameCreate>
     </template>
 
-    <template #item="item">
-      <GameItem :game="item" />
+    <template #item="{ edit, remove, ...item }">
+      <GameItem :game="item" @edit="edit" @remove="remove" />
     </template>
   </WrapperList>
 </template>

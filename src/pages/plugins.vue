@@ -10,7 +10,7 @@ const { configured } = useProvider()
   <WrapperList v-model="pluginList">
     <template #header>
       <PageName>
-        Plugin List
+        Content -> Plugin List
       </PageName>
 
       <PluginCreate v-slot="{ toggle }">

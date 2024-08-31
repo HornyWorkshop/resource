@@ -44,6 +44,10 @@ const availableExeList = computed(() => exeList.value.filter(x => !form.value.so
           {{ value.name }}
         </span>
 
+        <FormCheck>
+          default
+        </FormCheck>
+
         <FormButton type="button" :class="{ '!bg-lime-900': value.run }" @click="value.run = !value.run">
           <template v-if="value.run">
             is default

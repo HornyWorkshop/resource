@@ -8,7 +8,7 @@ export const schema = object({
   exeList: array(object({
     name: string().required(),
     run: boolean().required(),
-  })).required().min(1),
+  })).required().min(1).test('run', 'at least one executable must be marked as runnable.', e => e.some(e => e.run)),
 }).strict()
 
 export type Schema = InferType<typeof schema>

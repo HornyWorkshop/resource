@@ -3,9 +3,9 @@
   "compilerOptions": {
 
     "target": "ESNext",
-    "lib": ["ES2020", "DOM", "DOM.Iterable", "ESNext.String"],
+    "lib": ["ESNext", "DOM", "DOM.Iterable", "ESNext.String"],
     "module": "ESNext",
-    "moduleResolution": "bundler",
+    "moduleResolution": "Bundler",
 
     "paths": {
       "@shared/*": ["./src/modules/shared/*"],
@@ -14,5 +14,10 @@
     "types": ["vite/client", "unplugin-vue-router/client", "unplugin-icons/types/vue"]
   },
   "references": [{ "path": "./tsconfig.node.json" }],
-  "include": ["src/**/*.ts", ".types/**/*.d.ts", "src/**/*.vue", "src/components/game/create/icon-drop.vue1"]
+  "include": [
+    "src/**/*.ts",
+    "src/**/*.vue",
+
+    ".types/**/*.d.ts"
+  ]
 }

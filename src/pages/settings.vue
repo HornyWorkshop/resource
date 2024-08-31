@@ -1,16 +1,23 @@
 <script setup lang="ts">
 import { open } from '@tauri-apps/api/dialog'
 import { useProvider } from '@/modules/provider'
+import { useAsyncScope } from '@/composables/async-scope'
 
 const { root } = useProvider()
 
-async function onRootChange() {
-  const result = await open({ directory: true })
-  if (typeof result !== 'string') {
-    return
-  }
+const [state, toggle] = useToggle()
 
-  root.value = result
+async function onRootChange() {
+  const scope = useAsyncScope(() => Promise.resolve(toggle(false)))
+
+  await scope(async () => {
+    toggle(true)
+
+    const result = await open({ directory: true })
+    if (typeof result === 'string') {
+      root.value = result
+    }
+  })
 }
 </script>
 
@@ -23,7 +30,7 @@ async function onRootChange() {
     </PageHeader>
 
     <section class="space-x-4">
-      <FormButton type="button" @click="onRootChange()">
+      <FormButton type="button" :active="state" @click="onRootChange()">
         change provider root
       </FormButton>
 

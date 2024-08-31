@@ -8,7 +8,6 @@ export const styles = tv({
       secondary: 'outline-neutral-900',
     },
     size: {
-      none: '',
       small: 'px-4 py-2',
       medium: 'px-6 py-4',
 
