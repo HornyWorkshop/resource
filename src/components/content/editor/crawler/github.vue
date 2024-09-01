@@ -1,14 +1,15 @@
 <script setup lang="ts">
 import { useField } from 'vee-validate'
+import type { UUID } from 'io-ts-types'
 import type { Schema } from './schema'
 
-const { value: owner } = useField<Schema['github']['owner']>('github.owner')
-const { value: repo } = useField<Schema['github']['repo']>('github.repo')
+const { value: owner } = useField<Schema['provider']['owner']>('provider.owner')
+const { value: repo } = useField<Schema['provider']['repo']>('provider.repo')
 
 const { value: uuid } = useField<Schema['uuid']>('uuid')
 
 watchArray([owner, repo], () => {
-  uuid.value = createIdentity()
+  uuid.value = createIdentity() as UUID
 })
 </script>
 

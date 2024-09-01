@@ -2,7 +2,7 @@
 import { useGameList } from '../modules/game-list'
 import { useProvider } from '@/modules/provider'
 
-const { gameList } = useGameList()
+const { list: gameList } = useGameList()
 const { configured } = useProvider()
 </script>
 
@@ -13,11 +13,11 @@ const { configured } = useProvider()
         Content -> Game List
       </PageName>
 
-      <GameCreate v-slot="{ toggle }">
+      <ContentEditorGame v-slot="{ toggle }">
         <UiButton v-show="configured.state" type="button" @click="toggle()">
           add game
         </UiButton>
-      </GameCreate>
+      </ContentEditorGame>
     </template>
 
     <template #item="{ edit, remove, ...item }">
@@ -27,7 +27,7 @@ const { configured } = useProvider()
         </template>
 
         <template #body>
-          <GameItem :item="item" />
+          <ContentPreviewGameItem :item="item" />
         </template>
 
         <template #footer>

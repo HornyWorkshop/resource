@@ -11,16 +11,13 @@ export const styles = tv({
       none: '',
       small: 'px-4 py-2',
       medium: 'px-6 py-4',
-
-      // small: 'p-2',
-      // medium: 'p-4',
     },
     active: {
       true: 'outline-neutral-300',
       false: '',
     },
     hover: {
-      true: 'hover:outline-neutral-300',
+      true: 'hover:outline-neutral-300 hover:shadow-lg',
       false: '',
     },
   },

@@ -14,8 +14,9 @@ watch(directory, () => {
 function onAdd({ name }: FileEntry) {
   if (name) {
     form.value.push({
+      name: '',
+      exe: name,
       run: false,
-      name,
     })
   }
 }

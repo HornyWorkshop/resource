@@ -1,7 +1,7 @@
-import type { TypeOf } from 'io-ts'
-import { array } from 'io-ts'
+import { type TypeOf, record } from 'io-ts'
+import { UUID } from 'io-ts-types'
 import { Plugin } from '.'
 
-export const PluginList = array(Plugin)
+export const PluginList = record(UUID, Plugin)
 
 export type PluginList = TypeOf<typeof PluginList>

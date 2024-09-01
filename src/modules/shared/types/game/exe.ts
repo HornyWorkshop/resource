@@ -3,6 +3,7 @@ import { array, boolean, string, type } from 'io-ts'
 
 export const Exe = type({
   name: string,
+  exe: string,
   run: boolean,
 })
 

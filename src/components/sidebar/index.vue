@@ -4,6 +4,7 @@ import GamesIcon from '~icons/ic/baseline-games'
 import SettingsIcon from '~icons/ic/baseline-settings'
 import SmartButtonIcon from '~icons/ic/baseline-smart-button'
 import CropSquareIcon from '~icons/ic/baseline-crop-square'
+import CloudIcon from '~icons/ic/baseline-cloud'
 </script>
 
 <template>
@@ -18,6 +19,12 @@ import CropSquareIcon from '~icons/ic/baseline-crop-square'
       <RouterLink to="/plugins">
         <SidebarItem>
           <GamesIcon />
+        </SidebarItem>
+      </RouterLink>
+
+      <RouterLink to="/crawlers">
+        <SidebarItem>
+          <CloudIcon />
         </SidebarItem>
       </RouterLink>
 

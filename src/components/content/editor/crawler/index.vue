@@ -1,10 +1,9 @@
 <script setup lang="ts">
 import { useForm } from 'vee-validate'
 import { toTypedSchema } from '@vee-validate/yup'
-import { UUID } from 'io-ts-types'
+import type { UUID } from 'io-ts-types'
 import { schema } from './schema'
-import { useGameList } from '@/modules/game-list'
-import { cast } from '@/modules/validator/cast'
+import { useCrawlerList } from '@/modules/crawler-list'
 
 const { handleSubmit, resetForm, errors } = useForm({
   validationSchema: toTypedSchema(schema),
@@ -21,27 +20,29 @@ watch(state, (state) => {
 
   resetForm({
     values: {
-      uuid: createIdentity(),
-      name: '',
-      directory: '',
-      exeList: [],
+      uuid: createIdentity() as UUID,
+      plugin: '' as UUID,
+      provider: {
+        type: 'github',
+        owner: '',
+        repo: '',
+      },
+      gameList: [],
     },
   })
 
   nextTick(() => inputEl.value?.focus())
 })
 
-const { gameList } = useGameList()
+const { list: crawlerList } = useCrawlerList()
 
-const onSubmit = handleSubmit(({ uuid, name, exeList }) => {
-  gameList.value.push({
-    uuid: cast(UUID)(uuid),
-    name,
-    exeList: exeList.map(e => ({
-      name: e.name,
-      run: e.run,
-    })),
-  })
+const onSubmit = handleSubmit((value) => {
+  crawlerList.value[value.uuid] = {
+    uuid: value.uuid,
+    plugin: value.plugin,
+    provider: value.provider,
+    gameList: value.gameList,
+  }
 
   toggle()
 })
@@ -54,11 +55,11 @@ const onSubmit = handleSubmit(({ uuid, name, exeList }) => {
     <section class="flex size-full place-content-center place-items-center">
       <div class="flex h-3/4 w-full place-content-center place-items-center overflow-auto">
         <form class="size-full w-4/5 space-y-[6vh]" @submit="onSubmit">
-          <GameCreateName />
+          <ContentEditorCrawlerGithub />
 
-          <GameCreateSelectDirectory />
+          <ContentEditorCrawlerPlugin />
 
-          <GameCreateExe />
+          <ContentEditorCrawlerGameList />
 
           <FormErrors :errors="errors" />
 

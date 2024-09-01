@@ -1,12 +1,12 @@
 <script setup lang="ts" generic="T extends { uuid: string }">
-const model = defineModel<T[]>({ required: true })
+const model = defineModel<Record<string, T>>({ required: true })
 
-function onRemove({ index }: { index: number }) {
-  model.value.splice(Number(index), 1)
+function onRemove({ uuid }: { uuid: string }) {
+  delete model.value[uuid]
 }
 
-function onEdit({ index }: { index: number }) {
-  console.log('call edit:', index)
+function onEdit({ uuid }: { uuid: string }) {
+  console.log('call edit:', uuid)
 }
 </script>
 
@@ -18,15 +18,15 @@ function onEdit({ index }: { index: number }) {
       </div>
     </PageHeader>
 
-    <section v-if="model.length <= 0">
+    <section v-if="Object.keys(model).length <= 0">
       <p>
         nothing...
       </p>
     </section>
 
-    <section v-else class="grid gap-4" style="grid-template-columns: repeat(auto-fill, minmax(19rem, 1fr));">
-      <div v-for="item, index of model" :key="item.uuid">
-        <slot name="item" v-bind="item" :remove="() => onRemove({ index })" :edit="() => onEdit({ index })" />
+    <section v-else class="grid gap-4" style="grid-template-columns: repeat(auto-fill, minmax(22rem, 1fr));">
+      <div v-for="item, uuid of model" :key="uuid">
+        <slot name="item" v-bind="item" :remove="() => onRemove({ uuid })" :edit="() => onEdit({ uuid })" />
       </div>
     </section>
   </section>

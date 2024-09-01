@@ -1,7 +1,7 @@
 import { tv } from 'tailwind-variants'
 
 export const styles = tv({
-  base: 'rounded-md transition-colors',
+  base: 'rounded-md leading-none transition-colors',
   variants: {
     intent: {
       primary: 'bg-slate-600',
@@ -9,8 +9,8 @@ export const styles = tv({
       remove: 'bg-rose-600',
     },
     size: {
-      small: 'px-2',
-      medium: 'px-4 py-2',
+      small: 'p-2',
+      medium: 'p-4',
     },
     active: {
       true: '',

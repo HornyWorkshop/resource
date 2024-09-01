@@ -1,33 +1,36 @@
 <script setup lang="ts">
-import { usePluginList } from '../modules/plugin-list'
+import { useCrawlerList } from '@/modules/crawler-list'
+import { usePluginList } from '@/modules/plugin-list'
 import { useProvider } from '@/modules/provider'
 
 const { list: pluginList } = usePluginList()
+const { list: crawlerList } = useCrawlerList()
 const { configured } = useProvider()
 </script>
 
 <template>
-  <WrapperList v-model="pluginList">
+  <WrapperList v-model="crawlerList">
     <template #header>
       <PageName>
-        Content -> Plugin List
+        Content -> Update Crawler
       </PageName>
 
-      <ContentEditorPlugin v-slot="{ toggle }">
+      <ContentEditorCrawler v-slot="{ toggle }">
         <UiButton v-show="configured.state" type="button" @click="toggle()">
-          add plugin
+          add crawler
         </UiButton>
-      </ContentEditorPlugin>
+      </ContentEditorCrawler>
     </template>
 
     <template #item="{ edit, remove, ...item }">
       <ListItem @edit="edit" @remove="remove">
         <template #header>
-          {{ item.name }}
+          {{ pluginList[item.plugin]?.name }}
         </template>
 
         <template #body>
-          <ContentPreviewPluginItem :item="item" />
+          <ContentPreviewCrawlerProvider v-bind="item.provider" />
+          <ContentPreviewCrawlerItem :item="item" />
         </template>
 
         <template #footer>
