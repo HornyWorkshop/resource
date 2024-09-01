@@ -7,8 +7,6 @@ type ButtonProps = VariantProps<typeof styles>
 interface Props {
   intent?: ButtonProps['intent']
   size?: ButtonProps['size']
-  active?: ButtonProps['active']
-  hover?: ButtonProps['hover']
 }
 
 withDefaults(defineProps<Props>(), {
@@ -17,10 +15,10 @@ withDefaults(defineProps<Props>(), {
   active: false,
   hover: false,
 })
+
+const model = defineModel({ required: true })
 </script>
 
 <template>
-  <article :class="styles({ intent, size, active, hover })">
-    <slot />
-  </article>
+  <input v-model="model" :class="styles({ intent, size })">
 </template>

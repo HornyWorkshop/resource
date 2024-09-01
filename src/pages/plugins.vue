@@ -13,16 +13,26 @@ const { configured } = useProvider()
         Content -> Plugin List
       </PageName>
 
-      <GameCreate v-slot="{ toggle }">
-        <FormButton v-show="configured.state" type="button" @click="toggle()">
+      <PluginCreate v-slot="{ toggle }">
+        <UiButton v-show="configured.state" type="button" @click="toggle()">
           add plugin
-        </FormButton>
-      </GameCreate>
+        </UiButton>
+      </PluginCreate>
     </template>
 
     <template #item="{ edit, remove, ...item }">
       <ListItem @edit="edit" @remove="remove">
-        <PluginItem :item="item" />
+        <template #header>
+          [{{ item.github.owner }}]: {{ item.github.repo }}
+        </template>
+
+        <template #body>
+          <PluginItem :item="item" />
+        </template>
+        
+        <template #footer>
+          {{ item.uuid }}
+        </template>
       </ListItem>
     </template>
   </WrapperList>

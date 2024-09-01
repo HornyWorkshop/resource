@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { styles } from '@/components/form/group/styles'
+import { styles } from '@/components/ui/group/styles'
 </script>
 
 <template>
@@ -9,9 +9,9 @@ import { styles } from '@/components/form/group/styles'
     </template>
 
     <template #component="{ row }">
-      <FormGroup v-bind="row">
+      <UiGroup v-bind="row">
         some text
-      </FormGroup>
+      </UiGroup>
     </template>
   </WrapperUi>
 </template>

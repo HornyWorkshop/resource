@@ -1,7 +1,8 @@
-import { array, string, type } from 'io-ts'
+import { type } from 'io-ts'
 import { UUID } from 'io-ts-types'
+import { RegexList } from './regex-list'
 
 export const Game = type({
   uuid: UUID,
-  regex: array(string),
+  regexList: RegexList,
 })

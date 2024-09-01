@@ -6,11 +6,7 @@ defineProps<Props>()
 </script>
 
 <template>
-  <header class="grow truncate lowercase underline underline-offset-4">
-    {{ item.name }}
-  </header>
-
-  <div class="grid grid-cols-[1fr_auto] gap-x-4">
+  <article class="grid grid-cols-[1fr_auto] gap-x-4">
     <template v-for="{ name, run } of item.exeList" :key="name">
       <span class="truncate">
         {{ name }}
@@ -20,5 +16,5 @@ defineProps<Props>()
         {{ run }}
       </span>
     </template>
-  </div>
+  </article>
 </template>

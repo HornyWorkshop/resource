@@ -21,8 +21,8 @@ watchArray([owner, repo], () => {
     </div>
 
     <section class="grid grid-cols-2 gap-2">
-      <input v-model="owner" type="text" class="create-input-large" placeholder="GITHUB OWNER">
-      <input v-model="repo" type="text" class="create-input-large" placeholder="GITHUB REPO">
+      <UiInput v-model="owner" type="text" placeholder="GITHUB OWNER" spellcheck="false" />
+      <UiInput v-model="repo" type="text" placeholder="GITHUB REPO" spellcheck="false" />
     </section>
   </section>
 </template>

@@ -9,6 +9,7 @@ interface Props {
   size?: ButtonProps['size']
   active?: ButtonProps['active']
   cursor?: ButtonProps['cursor']
+  shadow?: ButtonProps['shadow']
 }
 
 withDefaults(defineProps<Props>(), {
@@ -16,11 +17,12 @@ withDefaults(defineProps<Props>(), {
   size: 'medium',
   active: false,
   cursor: true,
+  shadow: true,
 })
 </script>
 
 <template>
-  <button :class="styles({ intent, size, active, cursor })">
+  <button :class="styles({ intent, size, active, cursor, shadow })">
     <slot />
   </button>
 </template>

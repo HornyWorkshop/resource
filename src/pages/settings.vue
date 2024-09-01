@@ -30,9 +30,9 @@ async function onRootChange() {
     </PageHeader>
 
     <section class="space-x-4">
-      <FormButton type="button" :active="state" @click="onRootChange()">
+      <UiButton type="button" :active="state" @click="onRootChange()">
         change provider root
-      </FormButton>
+      </UiButton>
 
       <span>
         {{ root }}

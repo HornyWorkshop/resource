@@ -1,7 +1,7 @@
 <template>
   <section>
-    <FormButton class="size-full" type="submit">
+    <UiButton class="size-full" type="submit">
       save
-    </FormButton>
+    </UiButton>
   </section>
 </template>

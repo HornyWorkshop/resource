@@ -3,22 +3,28 @@ import { useField } from 'vee-validate'
 import type { Schema } from './schema'
 import { useGameList } from '@/modules/game-list'
 
+import DoNotDisturbIcon from '~icons/ic/baseline-do-not-disturb'
+
 const { gameList } = useGameList()
-const { value: form } = useField<Schema['gameList']>('gameList')
+const { value: game } = useField<Schema['gameList']>('gameList')
 
 const [state, toggle] = useToggle()
 
 function onRemove({ index }: { index: number }) {
-  form.value.splice(index, 1)
+  game.value.splice(index, 1)
 }
 
 function onSelect({ uuid }: { uuid: string }) {
-  form.value.push({
+  game.value.push({
     uuid,
     regexList: [],
   })
 
   toggle()
+}
+
+function onAdd({ list }: { list: typeof game.value[number]['regexList'] }) {
+  list.push({ uuid: createIdentity(), value: '' })
 }
 
 const el = ref()
@@ -28,17 +34,17 @@ onClickOutside(el, () => toggle(false))
 <template>
   <section class="space-y-4">
     <section ref="el" class="relative w-fit">
-      <FormButton type="button" intent="secondary" :active="state" @click="toggle()">
+      <UiButton type="button" intent="secondary" :active="state" @click="toggle()">
         pick game
-      </FormButton>
+      </UiButton>
 
       <TransitionVertical>
-        <section v-if="state" class="absolute left-0 top-full h-48 w-min overflow-hidden py-2">
+        <section v-if="state" class="absolute left-0 top-full max-h-48 w-min max-w-64 overflow-hidden py-2">
           <section class="size-full overflow-hidden rounded-md border border-stone-900/10 bg-stone-600 shadow-md">
             <section class="flex size-full flex-col gap-4 overflow-auto p-2">
-              <FormButton v-for="{ name, uuid } of gameList.filter(x => !form.some(y => x.uuid === y.uuid))" :key="uuid" type="button" class="!shadow-none" intent="secondary" @click="onSelect({ uuid })">
+              <UiButton v-for="{ name, uuid } of gameList.filter(x => !game.some(y => x.uuid === y.uuid))" :key="uuid" type="button" :shadow="false" intent="secondary" class="truncate" @click="onSelect({ uuid })">
                 {{ name }}
-              </FormButton>
+              </UiButton>
             </section>
           </section>
         </section>
@@ -46,21 +52,28 @@ onClickOutside(el, () => toggle(false))
     </section>
 
     <section class="space-y-4">
-      <FormGroup v-for="{ uuid, regexList }, index of form" :key="uuid" class="space-y-4">
+      <UiGroup v-for="{ uuid, regexList }, index of game" :key="uuid" class="space-y-4">
         <header class="flex items-center gap-4">
           <h1 class="grow underline underline-offset-4">
             {{ uuid }}
           </h1>
 
-          <FormButton type="button" intent="remove" size="small" @click="onRemove({ index })">
-            remove
-          </FormButton>
+          <button type="button" class="text-red-300 transition-colors hover:text-neutral-300" @click="onRemove({ index })">
+            <DoNotDisturbIcon />
+          </button>
         </header>
 
-        <section v-for="regex of regexList" :key="regex.uuid">
-          <input v-model="regex.value" type="text" class="create-input">
+        <section v-for="regex of regexList" :key="regex.uuid" class="flex items-center gap-4">
+          <UiInput v-model="regex.value" type="text" placeholder="regex" size="small" class="size-full" />
+          <button type="button" class="text-red-300 transition-colors hover:text-neutral-300" @click="onRemove({ index })">
+            <DoNotDisturbIcon />
+          </button>
         </section>
-      </FormGroup>
+
+        <UiButton class="size-full" @click="onAdd({ list: regexList }) ">
+          add regex
+        </UiButton>
+      </UiGroup>
     </section>
   </section>
 </template>

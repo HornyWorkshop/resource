@@ -21,8 +21,8 @@ async function onClick() {
       </FormSmall>
     </div>
 
-    <FormButton type="button" class="size-full" @click="onClick()">
+    <UiButton type="button" class="size-full" @click="onClick()">
       select folder
-    </FormButton>
+    </UiButton>
   </section>
 </template>

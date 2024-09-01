@@ -1,7 +1,7 @@
 import { tv } from 'tailwind-variants'
 
 export const styles = tv({
-  base: 'rounded-md shadow-md transition-colors',
+  base: 'rounded-md transition-colors',
   variants: {
     intent: {
       primary: 'bg-slate-600',
@@ -19,6 +19,10 @@ export const styles = tv({
     cursor: {
       true: 'cursor-pointer',
       false: 'cursor-default',
+    },
+    shadow: {
+      true: 'shadow-md',
+      false: '',
     },
   },
   compoundVariants: [

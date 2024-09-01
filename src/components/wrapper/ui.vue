@@ -58,7 +58,7 @@ function keyOf(x: Record<string, Literal>) {
     </PageHeader>
 
     <section class="grid gap-4" style="grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));">
-      <FormGroup v-for="row of rows" :key="keyOf(row)" class="space-y-4">
+      <UiGroup v-for="row of rows" :key="keyOf(row)" class="space-y-4">
         <h1>
           <ul class="grid grid-cols-[1fr_auto_auto] gap-x-2">
             <li v-for="value, key in row" :key="String(key)" class="contents">
@@ -68,7 +68,7 @@ function keyOf(x: Record<string, Literal>) {
         </h1>
 
         <slot name="component" :row="row" />        
-      </FormGroup>
+      </UiGroup>
     </section>
   </section>
 </template>

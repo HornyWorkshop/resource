@@ -14,15 +14,25 @@ const { configured } = useProvider()
       </PageName>
 
       <GameCreate v-slot="{ toggle }">
-        <FormButton v-show="configured.state" type="button" @click="toggle()">
+        <UiButton v-show="configured.state" type="button" @click="toggle()">
           add game
-        </FormButton>
+        </UiButton>
       </GameCreate>
     </template>
 
     <template #item="{ edit, remove, ...item }">
       <ListItem @edit="edit" @remove="remove">
-        <GameItem :item="item" />
+        <template #header>
+          {{ item.name }}
+        </template>
+
+        <template #body>
+          <GameItem :item="item" />
+        </template>
+
+        <template #footer>
+          {{ item.uuid }}
+        </template>
       </ListItem>
     </template>
   </WrapperList>

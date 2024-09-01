@@ -39,9 +39,12 @@ const onSubmit = handleSubmit(({ uuid, github, gameList }) => {
   pluginList.value.push({
     uuid: cast(UUID)(uuid),
     github,
-    gameList: gameList.map(({ uuid, regex }) => ({
+    gameList: gameList.map(({ uuid, regexList }) => ({
       uuid: cast(UUID)(uuid),
-      regex,
+      regexList: regexList.map(({ uuid, value }) => ({
+        uuid: cast(UUID)(uuid),
+        value,
+      })),
     })),
   })
 

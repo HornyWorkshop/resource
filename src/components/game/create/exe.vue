@@ -30,13 +30,13 @@ const availableExeList = computed(() => exeList.value.filter(x => !form.value.so
 
 <template>
   <section v-if="exeList.length > 0" class="flex items-start gap-4">
-    <FormGroup v-show="availableExeList.length > 0" class="flex flex-col gap-4">
+    <UiGroup v-show="availableExeList.length > 0" class="flex flex-col gap-4">
       <template v-for="entry of availableExeList" :key="entry.name">
-        <FormButton v-if="entry.name" type="button" @click="onAdd(entry)">
+        <UiButton v-if="entry.name" type="button" @click="onAdd(entry)">
           {{ entry.name }}
-        </FormButton>
+        </UiButton>
       </template>
-    </FormGroup>
+    </UiGroup>
 
     <div v-show="form.length > 0" class="flex grow flex-wrap gap-2 rounded-md bg-neutral-800 p-4">
       <span v-for="value of form" :key="value.name" class="flex flex-col gap-4 rounded-md bg-neutral-900 p-4">
@@ -44,11 +44,11 @@ const availableExeList = computed(() => exeList.value.filter(x => !form.value.so
           {{ value.name }}
         </span>
 
-        <FormCheck>
+        <UiCheck>
           default
-        </FormCheck>
+        </UiCheck>
 
-        <FormButton type="button" :class="{ '!bg-lime-900': value.run }" @click="value.run = !value.run">
+        <UiButton type="button" :class="{ '!bg-lime-900': value.run }" @click="value.run = !value.run">
           <template v-if="value.run">
             is default
           </template>
@@ -56,7 +56,7 @@ const availableExeList = computed(() => exeList.value.filter(x => !form.value.so
           <template v-else>
             is not default
           </template>
-        </FormButton>
+        </UiButton>
       </span>
     </div>
   </section>

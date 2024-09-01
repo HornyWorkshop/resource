@@ -1,21 +1,23 @@
 <script setup lang="ts">
 import type { Plugin } from '@shared/types/plugin'
+import { useGameList } from '@/modules/game-list'
 
 interface Props { item: Plugin }
 defineProps<Props>()
+
+const { gameList } = useGameList()
 </script>
 
 <template>
-  <FormGroup class="cursor-move space-y-4">
-    <header class="px-2 lowercase underline underline-offset-4">
-      [{{ item.github.owner }}]: {{ item.github.repo }}
-    </header>
+  <section class="space-y-4">
+    <template v-for="{ uuid, regexList } of item.gameList" :key="uuid">
+      <h1 class="uppercase text-sky-300">
+        {{ gameList.find(e => e.uuid === uuid)?.name ?? 'Unknown game' }}
+      </h1>
 
-    <div class="grid grid-cols-[1fr_auto] gap-x-4">
-      <template v-for="{ uuid, regex } of item.gameList" :key="uuid">
-        <span>{{ uuid }}</span>
-        <span class="text-fuchsia-300">{{ regex }}</span>
-      </template>
-    </div>
-  </FormGroup>
+      <ul class="text-fuchsia-300">
+        <PluginRegex :list="regexList" />
+      </ul>
+    </template>
+  </section>
 </template>
