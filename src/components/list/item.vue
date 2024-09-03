@@ -1,12 +1,22 @@
 <script setup lang="ts">
+import type { Component } from 'vue'
 import EditIcon from '~icons/ic/baseline-edit'
 import DoNotDisturbIcon from '~icons/ic/baseline-do-not-disturb'
 
-defineEmits<Emits>()
 interface Emits {
   (e: 'remove'): void
   (e: 'edit'): void
 }
+
+interface Slots {
+  footer: () => Component
+  body: () => Component
+  header?: () => Component
+}
+
+defineEmits<Emits>()
+
+const slots = defineSlots<Slots>()
 </script>
 
 <template>
@@ -26,7 +36,7 @@ interface Emits {
     </aside>
 
     <section class="size-full space-y-4 overflow-hidden p-4">
-      <header class="truncate lowercase underline underline-offset-4">
+      <header v-if="slots.header" class="truncate lowercase underline underline-offset-4">
         <slot name="header" />
       </header>
 

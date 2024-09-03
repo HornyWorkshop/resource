@@ -28,7 +28,7 @@ defineProps<Props>()
       </span>
     </div>
 
-    <small class="truncate text-rose-300">
+    <small class="truncate text-indigo-300">
       {{ type }}
     </small>
   </UiGroup>

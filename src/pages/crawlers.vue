@@ -1,9 +1,7 @@
 <script setup lang="ts">
 import { useCrawlerList } from '@/modules/crawler-list'
-import { usePluginList } from '@/modules/plugin-list'
 import { useProvider } from '@/modules/provider'
 
-const { list: pluginList } = usePluginList()
 const { list: crawlerList } = useCrawlerList()
 const { configured } = useProvider()
 </script>
@@ -24,10 +22,6 @@ const { configured } = useProvider()
 
     <template #item="{ edit, remove, ...item }">
       <ListItem @edit="edit" @remove="remove">
-        <template #header>
-          {{ pluginList[item.plugin]?.name }}
-        </template>
-
         <template #body>
           <ContentPreviewCrawlerProvider v-bind="item.provider" />
           <ContentPreviewCrawlerItem :item="item" />

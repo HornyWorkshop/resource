@@ -26,7 +26,7 @@ const exeList = computedAsync(async () => {
   return values.filter(e => e.name?.endsWith('.exe'))
 }, [])
 
-const availableExeList = computed(() => exeList.value.filter(x => !form.value.some(y => y.name === x.name)))
+const availableExeList = computed(() => exeList.value.filter(x => form.value.some(y => y.name === x.name) === false))
 </script>
 
 <template>

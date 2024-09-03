@@ -21,13 +21,12 @@ watch(state, (state) => {
   resetForm({
     values: {
       uuid: createIdentity() as UUID,
-      plugin: '' as UUID,
       provider: {
         type: 'github',
         owner: '',
         repo: '',
       },
-      gameList: [],
+      pluginList: [],
     },
   })
 
@@ -39,9 +38,8 @@ const { list: crawlerList } = useCrawlerList()
 const onSubmit = handleSubmit((value) => {
   crawlerList.value[value.uuid] = {
     uuid: value.uuid,
-    plugin: value.plugin,
     provider: value.provider,
-    gameList: value.gameList,
+    pluginList: value.pluginList,
   }
 
   toggle()
@@ -58,8 +56,6 @@ const onSubmit = handleSubmit((value) => {
           <ContentEditorCrawlerGithub />
 
           <ContentEditorCrawlerPlugin />
-
-          <ContentEditorCrawlerGameList />
 
           <FormErrors :errors="errors" />
 
