@@ -1,17 +1,11 @@
 <script setup lang="ts" generic="T extends { uuid: string }">
 import type { VariantProps } from 'tailwind-variants'
+import type { UnwrapRef } from 'vue'
 import type { styles } from './styles'
 
 type StyleProps = VariantProps<typeof styles>
 
-interface Props {
-  intent?: StyleProps['intent']
-  size?: StyleProps['size']
-  values: ReadonlyArray<T>
-  print: keyof T
-}
-
-withDefaults(defineProps<Props>(), {
+const props = withDefaults(defineProps<Props>(), {
   intent: 'primary',
   size: 'medium',
   active: false,
@@ -19,6 +13,16 @@ withDefaults(defineProps<Props>(), {
 })
 
 defineEmits<Emits>()
+
+const data = ref('')
+
+interface Props {
+  intent?: StyleProps['intent']
+  size?: StyleProps['size']
+  values: ReadonlyArray<T>
+  print: keyof T
+  filter?: (input: UnwrapRef<typeof data>, value: T) => boolean
+}
 
 const [state, toggle] = useToggle()
 
@@ -28,6 +32,8 @@ interface Emits {
 
 const drop = ref()
 onClickOutside(drop, () => toggle(false))
+
+const items = computed(() => props.filter ? props.values.filter(props.filter.bind(null, data.value)) : props.values)
 </script>
 
 <template>
@@ -37,12 +43,16 @@ onClickOutside(drop, () => toggle(false))
     </UiButton>
 
     <TransitionVertical>
-      <section v-if="state" class="absolute inset-x-0 top-full z-10 max-h-48 overflow-hidden py-2">
-        <section class="size-full overflow-hidden rounded-md border border-stone-900/10 bg-stone-600 shadow-md">
-          <section class="flex size-full flex-col gap-4 overflow-auto p-2">
-            <UiButton v-for="value of values" :key="value.uuid" type="button" :shadow="false" intent="secondary" class="truncate" @click="$emit('select', value, toggle)">
-              {{ value[print as keyof typeof value] }}
-            </UiButton>
+      <section v-if="state" class="absolute inset-x-0 top-full z-10 py-2">
+        <section class="max-h-64 overflow-y-auto rounded-md border border-stone-900/10 bg-stone-600 shadow-md">
+          <section class="space-y-4 p-2">
+            <UiInput v-if="filter" v-model="data" intent="secondary" class="w-full text-center" />
+
+            <section v-if="items.length > 0" class="flex flex-col gap-2">
+              <UiButton v-for="item of items" :key="item.uuid" type="button" :shadow="false" intent="secondary" class="truncate" @click="$emit('select', item, toggle)">
+                {{ item[print as keyof typeof item] }}
+              </UiButton>
+            </section>
           </section>
         </section>
       </section>

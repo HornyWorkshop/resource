@@ -25,7 +25,7 @@ const available = computed(() => Object.values(pluginList.value).filter(x => plu
       </UiGroup>
     </section>
 
-    <UiDrop v-if="available.length > 0" :values="available" print="name" @select="({ uuid }) => plugin.push({ uuid, gameList: [] })">
+    <UiDrop v-if="available.length > 0" :values="available" print="name" :filter="(input, value) => value.name.toLocaleLowerCase().includes(input.toLocaleLowerCase())" @select="({ uuid }) => plugin.push({ uuid, gameList: [] })">
       pick plugin
     </UiDrop>
   </section>
