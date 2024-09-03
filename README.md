@@ -2,4 +2,4 @@
 
 # @horny-workshop/resource
 
-It's just a games and plugins management program.
+It's just a games and plugins management program for [provider](https://github.com/HornyWorkshop/shared) and [client](https://github.com/HornyWorkshop/client).
