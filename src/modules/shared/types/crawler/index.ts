@@ -1,8 +1,8 @@
-import type { TypeOf } from 'io-ts'
 import { type } from 'io-ts'
 import { UUID } from 'io-ts-types'
-import { Provider } from './provider'
+import type { TypeOf } from 'io-ts'
 import { PluginList } from './plugin/list'
+import { Provider } from './provider'
 
 export const Crawler = type({
   uuid: UUID,

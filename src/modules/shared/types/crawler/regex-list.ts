@@ -1,5 +1,5 @@
-import type { TypeOf } from 'io-ts'
 import { array } from 'io-ts'
+import type { TypeOf } from 'io-ts'
 import { Regex } from './regex'
 
 export const RegexList = array(Regex)

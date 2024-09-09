@@ -1,13 +1,14 @@
 <script setup lang="ts">
+import { cast } from '@/modules/validator/cast'
+import { UUID } from 'io-ts-types'
 import { useField } from 'vee-validate'
-import type { UUID } from 'io-ts-types'
 import type { Schema } from './schema'
 
 const { value: name } = useField<Schema['name']>('name')
 const { value: uuid } = useField<Schema['uuid']>('uuid')
 
 watch(name, () => {
-  uuid.value = createIdentity() as UUID
+  uuid.value = cast(UUID)(createIdentity())
 })
 </script>
 

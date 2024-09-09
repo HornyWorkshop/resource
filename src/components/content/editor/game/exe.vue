@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import { useField } from 'vee-validate'
-
 import { type FileEntry, readDir } from '@tauri-apps/api/fs'
+
+import { useField } from 'vee-validate'
 import type { Schema } from './schema'
 
 const { value: form, resetField: formReset } = useField<Schema['exeList']>('exeList')

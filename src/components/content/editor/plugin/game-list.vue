@@ -1,7 +1,7 @@
 <script setup lang="ts">
+import { useGameList } from '@/modules/game-list'
 import { useField } from 'vee-validate'
 import type { Schema } from './schema'
-import { useGameList } from '@/modules/game-list'
 
 const { value: game } = useField<Schema['gameList']>('gameList')
 

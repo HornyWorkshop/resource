@@ -1,6 +1,6 @@
+import { array, object, string } from 'yup'
 import type { UUID } from 'io-ts-types'
 import type { InferType } from 'yup'
-import { array, object, string } from 'yup'
 
 const gitHubProvider = object({
   type: string().oneOf(['github']).required(),

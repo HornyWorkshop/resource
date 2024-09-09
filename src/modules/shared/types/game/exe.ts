@@ -1,5 +1,5 @@
-import type { TypeOf } from 'io-ts'
 import { array, boolean, string, type } from 'io-ts'
+import type { TypeOf } from 'io-ts'
 
 export const Exe = type({
   name: string,

@@ -1,4 +1,4 @@
-import { type TypeOf, record } from 'io-ts'
+import { record, type TypeOf } from 'io-ts'
 import { UUID } from 'io-ts-types'
 import { Plugin } from '.'
 

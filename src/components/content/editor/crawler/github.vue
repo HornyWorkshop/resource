@@ -1,6 +1,7 @@
 <script setup lang="ts">
+import { cast } from '@/modules/validator/cast'
+import { UUID } from 'io-ts-types'
 import { useField } from 'vee-validate'
-import type { UUID } from 'io-ts-types'
 import type { Schema } from './schema'
 
 const { value: owner } = useField<Schema['provider']['owner']>('provider.owner')
@@ -9,7 +10,7 @@ const { value: repo } = useField<Schema['provider']['repo']>('provider.repo')
 const { value: uuid } = useField<Schema['uuid']>('uuid')
 
 watchArray([owner, repo], () => {
-  uuid.value = createIdentity() as UUID
+  uuid.value = cast(UUID)(createIdentity())
 })
 </script>
 

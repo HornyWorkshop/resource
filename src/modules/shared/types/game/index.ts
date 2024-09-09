@@ -1,7 +1,7 @@
-import type { TypeOf } from 'io-ts'
-
 import { string, type } from 'io-ts'
+
 import { UUID } from 'io-ts-types'
+import type { TypeOf } from 'io-ts'
 import { ExeList } from './exe'
 
 export const Game = type({

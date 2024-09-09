@@ -1,8 +1,8 @@
 <script setup lang="ts">
+import { useGameList } from '@/modules/game-list'
 import { useField } from 'vee-validate'
 import type { UnwrapRef } from 'vue'
 import type { Schema } from './schema'
-import { useGameList } from '@/modules/game-list'
 
 const props = defineProps<Props>()
 

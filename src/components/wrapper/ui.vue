@@ -67,7 +67,7 @@ function keyOf(x: Record<string, Literal>) {
           </ul>
         </h1>
 
-        <slot name="component" :row="row" />        
+        <slot name="component" :row="row" />
       </UiGroup>
     </section>
   </section>

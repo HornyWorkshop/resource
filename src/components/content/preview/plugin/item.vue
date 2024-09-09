@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import type { Plugin } from '@shared/types/plugin'
 import { useGameList } from '@/modules/game-list'
+import type { Plugin } from '@shared/types/plugin'
 
 interface Props { item: Plugin }
 defineProps<Props>()

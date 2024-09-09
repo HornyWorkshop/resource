@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { usePluginList } from '../modules/plugin-list'
 import { useProvider } from '@/modules/provider'
+import { usePluginList } from '../modules/plugin-list'
 
 const { list: pluginList } = usePluginList()
 const { configured } = useProvider()

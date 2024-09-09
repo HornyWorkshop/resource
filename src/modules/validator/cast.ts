@@ -1,5 +1,5 @@
-import { flow } from 'fp-ts/function'
 import { getOrElse } from 'fp-ts/Either'
+import { flow } from 'fp-ts/function'
 import { failure } from 'io-ts/PathReporter'
 import type { Decoder, Errors, Type } from 'io-ts'
 

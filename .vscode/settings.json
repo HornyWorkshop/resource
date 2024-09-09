@@ -77,6 +77,9 @@
   "[jsonc]": {
     "editor.defaultFormatter": "dbaeumer.vscode-eslint"
   },
+  "[toml]": {
+    "editor.defaultFormatter": "dbaeumer.vscode-eslint"
+  },
 
   "debug.allowBreakpointsEverywhere": true,
 

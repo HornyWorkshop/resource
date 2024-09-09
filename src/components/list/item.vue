@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import type { Component } from 'vue'
-import EditIcon from '~icons/ic/baseline-edit'
 import DoNotDisturbIcon from '~icons/ic/baseline-do-not-disturb'
+import EditIcon from '~icons/ic/baseline-edit'
+import type { Component } from 'vue'
 
 interface Emits {
   (e: 'remove'): void

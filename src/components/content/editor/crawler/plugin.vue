@@ -1,7 +1,7 @@
 <script setup lang="ts">
+import { usePluginList } from '@/modules/plugin-list'
 import { useField } from 'vee-validate'
 import type { Schema } from './schema'
-import { usePluginList } from '@/modules/plugin-list'
 
 const { list: pluginList } = usePluginList()
 const { value: plugin } = useField<Schema['pluginList']>('pluginList')

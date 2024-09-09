@@ -1,14 +1,14 @@
-import { URL, fileURLToPath } from 'node:url'
-
-import { defineConfig } from 'vite'
-import { VueRouterAutoImports } from 'unplugin-vue-router'
+import { fileURLToPath, URL } from 'node:url'
 
 import vue from '@vitejs/plugin-vue'
 
-import autoIcons from 'unplugin-icons/vite'
-import autoRouter from 'unplugin-vue-router/vite'
 import autoImports from 'unplugin-auto-import/vite'
+import autoIcons from 'unplugin-icons/vite'
+
 import autoComponents from 'unplugin-vue-components/vite'
+import { VueRouterAutoImports } from 'unplugin-vue-router'
+import autoRouter from 'unplugin-vue-router/vite'
+import { defineConfig } from 'vite'
 
 // https://vitejs.dev/config/
 export default defineConfig(async () => ({

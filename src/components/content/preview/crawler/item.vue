@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import type { Crawler } from '@shared/types/crawler'
 import { useGameList } from '@/modules/game-list'
 import { usePluginList } from '@/modules/plugin-list'
+import type { Crawler } from '@shared/types/crawler'
 
 interface Props { item: Crawler }
 defineProps<Props>()

@@ -1,9 +1,10 @@
 <script setup lang="ts">
-import { useForm } from 'vee-validate'
-import { toTypedSchema } from '@vee-validate/yup'
-import type { UUID } from 'io-ts-types'
-import { schema } from './schema'
 import { useCrawlerList } from '@/modules/crawler-list'
+import { cast } from '@/modules/validator/cast'
+import { toTypedSchema } from '@vee-validate/yup'
+import { UUID } from 'io-ts-types'
+import { useForm } from 'vee-validate'
+import { schema } from './schema'
 
 const { handleSubmit, resetForm, errors } = useForm({
   validationSchema: toTypedSchema(schema),
@@ -20,7 +21,7 @@ watch(state, (state) => {
 
   resetForm({
     values: {
-      uuid: createIdentity() as UUID,
+      uuid: cast(UUID)(createIdentity()),
       provider: {
         type: 'github',
         owner: '',

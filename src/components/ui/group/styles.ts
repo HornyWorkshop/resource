@@ -17,7 +17,7 @@ export const styles = tv({
       false: '',
     },
     hover: {
-      true: 'hover:outline-neutral-300 hover:shadow-lg',
+      true: 'hover:shadow-lg hover:outline-neutral-300',
       false: '',
     },
   },

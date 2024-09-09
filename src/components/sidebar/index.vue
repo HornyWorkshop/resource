@@ -1,10 +1,10 @@
 <script setup lang="ts">
+import CloudIcon from '~icons/ic/baseline-cloud'
 import CookieIcon from '~icons/ic/baseline-cookie'
+import CropSquareIcon from '~icons/ic/baseline-crop-square'
 import GamesIcon from '~icons/ic/baseline-games'
 import SettingsIcon from '~icons/ic/baseline-settings'
 import SmartButtonIcon from '~icons/ic/baseline-smart-button'
-import CropSquareIcon from '~icons/ic/baseline-crop-square'
-import CloudIcon from '~icons/ic/baseline-cloud'
 </script>
 
 <template>

@@ -2,10 +2,10 @@ import { readTextFile, writeTextFile } from '@tauri-apps/api/fs'
 import { join } from '@tauri-apps/api/path'
 import { match } from 'fp-ts/lib/Either'
 import { pipe } from 'fp-ts/lib/function'
-import type { Decoder, Errors } from 'io-ts'
-import type { UnwrapRef } from 'vue'
-import type { UUID } from 'io-ts-types'
 import { failure } from 'io-ts/PathReporter'
+import type { Decoder, Errors } from 'io-ts'
+import type { UUID } from 'io-ts-types'
+import type { UnwrapRef } from 'vue'
 import { useProvider } from '../provider'
 
 function onLeft(e: Errors) {
