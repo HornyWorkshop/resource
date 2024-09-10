@@ -40,7 +40,7 @@ const slots = defineSlots<Slots>()
       </button>
     </aside>
 
-    <section :class="{ 'flex flex-row items-center justify-between gap-4': line, 'space-y-4': !line }" class="size-full overflow-hidden p-4">
+    <section :class="{ 'flex flex-row items-center justify-between gap-4': line, 'space-y-4': !line }" class="w-full overflow-hidden p-4">
       <header v-if="slots.header" class="lowercase underline underline-offset-4">
         <slot name="header" />
       </header>
