@@ -9,6 +9,7 @@ interface Props {
   size?: ButtonProps['size']
   active?: ButtonProps['active']
   hover?: ButtonProps['hover']
+  name?: string
 }
 
 withDefaults(defineProps<Props>(), {
@@ -21,6 +22,10 @@ withDefaults(defineProps<Props>(), {
 
 <template>
   <article :class="styles({ intent, size, active, hover })">
+    <FormSmall v-if="name" class="w-fit leading-none">
+      {{ name }}
+    </FormSmall>
+
     <slot />
   </article>
 </template>

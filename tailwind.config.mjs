@@ -9,6 +9,9 @@ export default {
       fontFamily: {
         'jetbrains-mono': ['JetBrains Mono', 'monospace'],
       },
+      gridTemplateColumns: {
+        'wrapper-list': 'repeat(auto-fill, minmax(22rem, 1fr))',
+      },
     },
   },
   plugins: [],

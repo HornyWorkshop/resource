@@ -24,7 +24,7 @@ interface Props {
   filter?: (input: UnwrapRef<typeof data>, value: T) => boolean
 }
 
-const [state, toggle] = useToggle()
+const [toggled, toggle] = useToggle()
 
 interface Emits {
   (e: 'select', value: T, t: typeof toggle): void
@@ -38,17 +38,17 @@ const items = computed(() => props.filter ? props.values.filter(props.filter.bin
 
 <template>
   <section ref="drop" class="relative">
-    <UiButton type="button" intent="secondary" :active="state" class="size-full" @click="toggle()">
+    <UiButton type="button" :active="toggled || items.length <= 0" intent="secondary" class="size-full" :disabled="items.length <= 0" @click="toggle()">
       <slot />
     </UiButton>
 
     <TransitionVertical>
-      <section v-if="state" class="absolute inset-x-0 top-full z-10 py-2">
+      <section v-if="toggled && items.length > 0" class="absolute inset-x-0 top-full z-10 py-2">
         <section class="max-h-64 overflow-y-auto rounded-md border border-stone-900/10 bg-stone-600 shadow-md">
           <section class="space-y-4 p-2">
             <UiInput v-if="filter" v-model="data" intent="secondary" class="w-full text-center" />
 
-            <section v-if="items.length > 0" class="flex flex-col gap-2">
+            <section class="flex flex-col gap-2">
               <UiButton v-for="item of items" :key="item.uuid" type="button" :shadow="false" intent="secondary" class="truncate" @click="$emit('select', item, toggle)">
                 {{ item[print as keyof typeof item] }}
               </UiButton>

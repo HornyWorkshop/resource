@@ -25,6 +25,7 @@ watch(state, (state) => {
       name: '',
       directory: '',
       exeList: [],
+      authorList: [],
     },
   })
 
@@ -52,6 +53,8 @@ const onSubmit = handleSubmit((value) => {
           <ContentEditorGameSelectDirectory />
 
           <ContentEditorGameExe />
+
+          <ContentEditorGameAuthorList />
 
           <FormErrors :errors="errors" />
 

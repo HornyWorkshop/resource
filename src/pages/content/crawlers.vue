@@ -10,7 +10,7 @@ const { configured } = useProvider()
   <WrapperList v-model="crawlerList">
     <template #header>
       <PageName>
-        Content -> Update Crawler
+        Content -> Update Crawler List
       </PageName>
 
       <ContentEditorCrawler v-slot="{ toggle }">

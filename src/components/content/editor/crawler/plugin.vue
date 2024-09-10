@@ -13,7 +13,7 @@ const available = computed(() => Object.values(pluginList.value).filter(x => plu
   <section class="space-y-4">
     <section v-if="plugin.length > 0" class="space-y-4">
       <UiGroup v-for="{ uuid }, index of plugin" :key="uuid" class="space-y-4">
-        <ContentSharedRemovable class="flex gap-2 underline underline-offset-4" @click="plugin.splice(index, 1)">
+        <ContentSharedRemovable class="flex gap-2 underline underline-offset-4" @remove="plugin.splice(index, 1)">
           <span>
             {{ pluginList[uuid]?.name ?? "Unknown plugin" }}
           </span>

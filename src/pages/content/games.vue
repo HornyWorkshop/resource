@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { useProvider } from '@/modules/provider'
-import { useGameList } from '../modules/game-list'
+import { useGameList } from '../../modules/game-list'
 
 const { list: gameList } = useGameList()
 const { configured } = useProvider()

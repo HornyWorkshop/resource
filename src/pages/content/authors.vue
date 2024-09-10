@@ -1,33 +1,31 @@
 <script setup lang="ts">
 import { useProvider } from '@/modules/provider'
-import { usePluginList } from '../modules/plugin-list'
+import { useAuthorList } from '../../modules/author-list'
 
-const { list: pluginList } = usePluginList()
+const { list: authorList } = useAuthorList()
 const { configured } = useProvider()
 </script>
 
 <template>
-  <WrapperList v-model="pluginList">
+  <WrapperList v-model="authorList" line>
     <template #header>
       <PageName>
-        Content -> Plugin List
+        Content -> Authors List
       </PageName>
 
-      <ContentEditorPlugin v-slot="{ toggle }">
+      <ContentEditorAuthor v-slot="{ toggle }">
         <UiButton v-show="configured.state" type="button" @click="toggle()">
-          add plugin
+          add author
         </UiButton>
-      </ContentEditorPlugin>
+      </ContentEditorAuthor>
     </template>
 
     <template #item="{ edit, remove, ...item }">
-      <ListItem @edit="edit" @remove="remove">
-        <template #header>
-          {{ item.name }}
-        </template>
-
+      <ListItem line @edit="edit" @remove="remove">
         <template #body>
-          <ContentPreviewPluginItem :item="item" />
+          <p class="leading-none">
+            {{ item.name }}
+          </p>
         </template>
 
         <template #footer>

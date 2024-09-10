@@ -20,6 +20,6 @@ watch(name, () => {
       </FormSmall>
     </div>
 
-    <input v-model="name" type="text" class="create-input-large" placeholder="PLUGIN NAME">
+    <input v-model="name" type="text" class="create-input-large" placeholder="AUTHOR NAME">
   </section>
 </template>

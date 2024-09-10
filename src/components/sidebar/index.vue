@@ -3,6 +3,7 @@ import CloudIcon from '~icons/ic/baseline-cloud'
 import CookieIcon from '~icons/ic/baseline-cookie'
 import CropSquareIcon from '~icons/ic/baseline-crop-square'
 import GamesIcon from '~icons/ic/baseline-games'
+import PeopleIcon from '~icons/ic/baseline-people'
 import SettingsIcon from '~icons/ic/baseline-settings'
 import SmartButtonIcon from '~icons/ic/baseline-smart-button'
 </script>
@@ -10,19 +11,25 @@ import SmartButtonIcon from '~icons/ic/baseline-smart-button'
 <template>
   <aside class="bg-neutral-900">
     <nav class="flex flex-col gap-2 p-2">
-      <RouterLink to="/games">
+      <RouterLink to="/content/authors">
+        <SidebarItem>
+          <PeopleIcon />
+        </SidebarItem>
+      </RouterLink>
+
+      <RouterLink to="/content/games">
         <SidebarItem>
           <CookieIcon />
         </SidebarItem>
       </RouterLink>
 
-      <RouterLink to="/plugins">
+      <RouterLink to="/content/plugins">
         <SidebarItem>
           <GamesIcon />
         </SidebarItem>
       </RouterLink>
 
-      <RouterLink to="/crawlers">
+      <RouterLink to="/content/crawlers">
         <SidebarItem>
           <CloudIcon />
         </SidebarItem>

@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { usePluginList } from '@/modules/plugin-list'
+import { useAuthorList } from '@/modules/author-list'
 import { cast } from '@/modules/validator/cast'
 import { toTypedSchema } from '@vee-validate/yup'
 import { UUID } from 'io-ts-types'
@@ -23,18 +23,16 @@ watch(state, (state) => {
     values: {
       uuid: cast(UUID)(createIdentity()),
       name: '',
-      authorList: [],
-      gameList: [],
     },
   })
 
   nextTick(() => inputEl.value?.focus())
 })
 
-const { list: pluginList } = usePluginList()
+const { list: authorList } = useAuthorList()
 
 const onSubmit = handleSubmit((value) => {
-  pluginList.value[value.uuid] = value
+  authorList.value[value.uuid] = value
 
   toggle()
 })
@@ -47,11 +45,9 @@ const onSubmit = handleSubmit((value) => {
     <section class="flex size-full place-content-center place-items-center">
       <div class="flex h-3/4 w-full place-content-center place-items-center overflow-auto">
         <form class="size-full w-4/5 space-y-[6vh]" @submit="onSubmit">
-          <ContentEditorPluginName />
+          <ContentEditorAuthorName />
 
-          <ContentEditorPluginGameList />
-
-          <ContentEditorPluginAuthorList />
+          <ContentEditorAuthorGameList />
 
           <FormErrors :errors="errors" />
 

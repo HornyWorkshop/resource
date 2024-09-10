@@ -11,16 +11,14 @@ const available = computed(() => Object.values(gameList.value).filter(x => game.
 </script>
 
 <template>
-  <UiGroup class="space-y-4">
-    <section v-if="game.length > 0" class="flex flex-col gap-2">
-      <ContentSharedRemovable v-for="value, index of game" :key="value" @click="game.splice(index, 1)">
-        <span>
-          {{ gameList[value]?.name }}
-        </span>
-      </ContentSharedRemovable>
+  <UiGroup class="space-y-4" name="Games that the plugin supports.">
+    <section v-if="game.length > 0" class="flex flex-wrap gap-2">
+      <UiButton v-for="value, index of game" :key="value" type="button" @click.prevent="game.splice(index, 1)">
+        {{ gameList[value]?.name }}
+      </UiButton>
     </section>
 
-    <UiDrop v-if="available.length > 0" :values="available" print="name" @select="({ uuid }, toggle) => { game.push(uuid), toggle() }">
+    <UiDrop :values="available" print="name" @select="({ uuid }, toggle) => { game.push(uuid), toggle() }">
       pick game
     </UiDrop>
   </UiGroup>

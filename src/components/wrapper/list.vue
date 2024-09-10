@@ -1,4 +1,10 @@
 <script setup lang="ts" generic="T extends { uuid: string }">
+interface Props {
+  line?: boolean
+}
+
+defineProps<Props>()
+
 const model = defineModel<Record<string, T>>({ required: true })
 
 function onRemove({ uuid }: { uuid: string }) {
@@ -24,7 +30,7 @@ function onEdit({ uuid }: { uuid: string }) {
       </p>
     </section>
 
-    <section v-else class="grid gap-4" style="grid-template-columns: repeat(auto-fill, minmax(22rem, 1fr));">
+    <section v-else :class="{ 'grid-cols-wrapper-list': !line }" class="grid gap-4">
       <div v-for="item, uuid of model" :key="uuid">
         <slot name="item" v-bind="item" :remove="() => onRemove({ uuid })" :edit="() => onEdit({ uuid })" />
       </div>

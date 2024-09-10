@@ -3,17 +3,22 @@ import DoNotDisturbIcon from '~icons/ic/baseline-do-not-disturb'
 import EditIcon from '~icons/ic/baseline-edit'
 import type { Component } from 'vue'
 
+interface Props {
+  line?: boolean
+}
+
 interface Emits {
   (e: 'remove'): void
   (e: 'edit'): void
 }
 
 interface Slots {
-  footer: () => Component
-  body: () => Component
+  footer?: () => Component
+  body?: () => Component
   header?: () => Component
 }
 
+defineProps<Props>()
 defineEmits<Emits>()
 
 const slots = defineSlots<Slots>()
@@ -21,7 +26,7 @@ const slots = defineSlots<Slots>()
 
 <template>
   <UiGroup class="flex" :hover="true" size="none">
-    <aside class="flex flex-col gap-2 bg-neutral-900 px-2 py-4">
+    <aside :class="{ 'flex-row': line, 'flex-col': !line }" class="flex gap-2 bg-neutral-900 p-2">
       <button type="button" @click="$emit('edit')">
         <ListSidebarItem>
           <EditIcon />
@@ -35,16 +40,16 @@ const slots = defineSlots<Slots>()
       </button>
     </aside>
 
-    <section class="size-full space-y-4 overflow-hidden p-4">
-      <header v-if="slots.header" class="truncate lowercase underline underline-offset-4">
+    <section :class="{ 'flex flex-row items-center justify-between gap-4': line, 'space-y-4': !line }" class="size-full overflow-hidden p-4">
+      <header v-if="slots.header" class="lowercase underline underline-offset-4">
         <slot name="header" />
       </header>
 
-      <section class="space-y-4">
+      <section v-if="slots.body" class="space-y-4">
         <slot name="body" />
       </section>
 
-      <footer class="text-xs font-bold uppercase text-neutral-700">
+      <footer v-if="slots.footer" class="text-xs font-bold uppercase text-neutral-700">
         <slot name="footer" />
       </footer>
     </section>
