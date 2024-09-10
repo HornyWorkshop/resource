@@ -11,7 +11,7 @@ const available = computed(() => Object.values(list.value).filter(x => authorLis
 </script>
 
 <template>
-  <UiGroup class="space-y-4" name="People somehow related to creating and/or maintaining the plugin.">
+  <UiGroup class="space-y-4" name="Game developers/studios/etc.">
     <section v-if="authorList.length > 0" class="flex flex-wrap gap-2">
       <UiButton v-for="value, index of authorList" :key="value" type="button" @click.prevent="authorList.splice(index, 1)">
         {{ list[value]?.name }}
